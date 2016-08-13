@@ -1,0 +1,25 @@
+#!/bin/ash
+PNUM=$#
+if [ "$PNUM" -ne 4 ]; then
+    echo usage: ${0} ipv4_addr digital_ocean_domain digital_ocean_auth_token digital_ocean_record_id
+    exit 172
+fi
+
+IPV4_ADDR=${1}
+DOMAIN=${2}
+TOKEN=${3}
+RECORD=${4}
+
+DATA='{"data":"'${IPV4_ADDR}'"}'
+
+echo "update request with following parameters: ipv4_addr=${IPV4_ADDR} digital_ocean_domain=${DOMAIN} digital_ocean_auth_token=${TOKEN} digital_ocean_record_id=${RECORD}"
+
+wget \
+  -O - \
+  --quiet \
+  --save-header \
+  --no-check-certificate \
+  --method="PUT" \
+  --header="Content-Type: application/json" \
+  --header="Authorization: Bearer ${TOKEN}" \
+  --body-data=${DATA} "https://api.digitalocean.com/v2/domains/${DOMAIN}/records/${RECORD}"

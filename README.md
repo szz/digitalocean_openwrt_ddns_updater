@@ -37,13 +37,14 @@ wget \
   
 ```
 
-## settings
-* _DDNS Service provider [IPv4]_: --custom--
-* _Custom update-script_: full path to updater script (eg: /root/ddns_digitalocean.sh)
-* _Hostname/Domain_: your domain or sub domain
-* _Username_: record id of your domain or sub domain
-* _Password_: your Digital Ocean authentication token
-
+## configuration
+ luci setting name            | config file key     | value
+------------------------------|---------------------|------------------------
+ DDNS Service provider [IPv4] |                     | --custom--
+ Custom update-script         | update_script       | full path to updater script (eg: /root/ddns_digitalocean.sh)
+ Hostname/Domain              | domain              | your domain or sub domain
+ Username                     | username            | record id of your domain or sub domain
+ Password                     | auth_token          | your Digital Ocean authentication token
 
 ## detailed info:
 * [Digital Ocean registration (affilated with $10 gift)](https://m.do.co/c/15372e13c7aa)
